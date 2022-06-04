@@ -1,0 +1,207 @@
+osr:
+  macos:
+    proprietary: true
+    description: "A graphical operating system developed by Apple Inc."
+    versions:
+      v1:
+        url: 'https://winworldpc.com/download/2d0fdb45-d5ff-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v2:
+        url: 'https://winworldpc.com/download/2ee8da4a-d602-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v3:
+        url: 'https://winworldpc.com/download/596c0afd-d604-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v4:
+        url: 'https://winworldpc.com/download/4ecf1e22-d60b-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v5:
+        url: 'https://winworldpc.com/download/fc4bafb8-d612-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v6:
+        url: 'https://winworldpc.com/download/e91b7a2b-d7aa-11e7-a73f-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v7:
+        url: 'https://winworldpc.com/download/c3b6c380-5fc3-a23f-c2ae-11c3a6e28094/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v8:
+        url: 'https://winworldpc.com/download/a655424a-e64b-11e8-9b71-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      v9:
+        url: 'https://winworldpc.com/download/3dc3a37f-6518-c39a-11c3-a4e284a2c3a5/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      OSX 10.0 PPC:
+        url: 'https://winworldpc.com/download/3e20e280-a0c3-9718-c39a-11c3a4e284a2/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      OSX 10.1 PPC:
+        url: 'https://winworldpc.com/download/3dc3a60a-2c18-c39a-11c3-a4e284a2c3a5/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      OSX 10.2 PPC:
+        url: 'https://winworldpc.com/download/7d214cc5-bde2-809e-e280-a611c3a4c2ac/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      OSX 10.3 PPC:
+        url: 'https://linkmix.co/1489265'
+      OSX 10.4 PPC:
+        url: 'https://archive.org/download/macosx10.4tigerretaildvd/Mac%20OS%20X%2010.4%20Tiger%20Retail%20DVD.iso'
+      OSX 10.5:
+        url: 'https://archive.org/download/OsxLeopardInstall/osx%20leopard%20install.iso'
+      OSX 10.6:
+        url: 'https://archive.org/download/SnowLeopardInstall/snow%20leopard%20install.iso'
+      OSX 10.7:
+        url: 'https://5-9-2-202.xyz/themacgo/Mac_OS_X_Lion_10.7.2.dmg?md5=tsQQWOMla_pMDIBndu252Q&expires=1603996939'
+      OSX 10.8:
+        url: 'https://ovh.sundryfiles.com/rK?download_token=d3b64cf6a070d4e529b243b2f30a44a006b341318dcd7fea4cbf16c34913b3ed'
+      OSX 10.9:
+        url: 'https://archive.org/download/OSXMavericksESD/%5BOSX%5D%20Mac%20OS%20X%2010.9.4%20Mavericks%20ESD.dmg'
+      OSX 10.10:
+        url: 'https://download213.xyz/MAC/Yosemite_10.10.3.dmg'
+      OSX 10.11:
+        url: 'http://updates-http.cdn-apple.com/2019/cert/061-41424-20191024-218af9ec-cf50-4516-9011-228c78eda3d2/InstallMacOSX.dmg'
+      OSX 10.12:
+        url: 'https://doc-0g-8k-docs.googleusercontent.com/docs/securesc/3c0uf8g5jscfbd977166g7nqsqsf631h/pn902b8psvi37nnfrt3aqp7c06gj52ta/1603878000000/15800933291929286564/03735844687554694997/19nLfflguts5X-xci_F3RK4dz3z020vGz?e=download&authuser=0&nonce=ardceav7prla2&user=03735844687554694997&hash=t47qbsnphbcis2aoh76jo4juhgtp74q9'
+      OSX 10.13:
+        url: 'http://download2345.mediafire.com/cp4x4i0cyt2g/4wuy42ubh7i41x0/macOS+High+Sierra+DMG+by+Geekrar.rar'
+      OSX 10.14:
+        url: 'https://isoriver.com/download-your-file-now/?url=https://archive.org/download/macOS_Mojave/macOS_Mojave.dmg'
+      OSX 10.15:
+        url: 'https://isoriver.com/download-your-file-now/?url=https://soft.uclv.edu.cu/isos/MacOS/macOS_Catalina_10.15_19A583.dmg'
+      v11 Public Beta 1:
+        url: 'https://download2329.mediafire.com/uvmcvoygiq7g/vuxhn73malcin7w/macOS+Big+Sur+Beta+11.0+%2820A5343j%29.iso'
+      v11.0.1:
+        url: 'http://www.mediafire.com/file/dbfod9u5q9ii9nd/macOS_Big_Sur_11.0.1_%252820B29%2529.iso/file'
+
+  macos-server:
+    proprietary: true
+    description: "a version of Apple's macOS intended to be used on servers"
+    versions:
+      v1.0:
+        url: 'https://winworldpc.com/download/3dc39d24-c2bb-18c3-9a11-c3a4e284a2ef/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+
+  apple-aux:
+    proprietary: true
+    description: "Apple's implementation of Unix for Macintosh computers."
+    versions:
+      A/UX 1:
+        url: 'https://winworldpc.com/download/c2bf03e2-809a-04c3-b9c3-8a11c3a6c2bb/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      A/UX 2:
+        url: 'https://winworldpc.com/download/3e41e284-a238-18c3-9a11-c3a4e284a2ef/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      A/UX 3:
+        url: 'https://winworldpc.com/download/3e100254-18c3-9a11-c3a4-e284a2c3a570/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+
+  windos:
+    proprietary: true
+    description: "Older Windows versions based on DOS"
+    versions:
+      Windows 1.0:
+        url: 'https://archive.org/download/austin_1.01/1.01.zip'
+      Windows 2.03:
+        url: 'https://winworldpc.com/download/c3bec3ad-e280-a03a-e280-b05f11c3a4ef/from/c39ac2af-c381-c2bf-1b25-11c3a4e284a2'
+      Windows 3.0:
+        url: 'https://archive.org/download/windows3.0isofile/Windows%203.0.iso'
+      Windows 95:
+        url: 'https://winworldpc.com/download/48373a22-25c3-8911-c3a6-e280947e5254/from/c39ac2af-c381-c2bf-1b25-11c3a4e284a2'
+      Windows 98:
+        url: 'https://winworldpc.com/download/c3b4c382-3210-e280-9d7b-11c3a4c2ac5a/from/c39ac2af-c381-c2bf-1b25-11c3a4e284a2'
+
+  ms-dos:
+    proprietary: true
+    description: "A non-graphical operating system for PCs by Microsoft."
+    versions:
+      v6.0:
+        url: 'https://winworldpc.com/download/40c396c3-9bc3-bd18-c39a-11c3a4e284a2/from/c39ac2af-c381-c2bf-1b25-11c3a4e284a2'
+      v6.22:
+        url: 'https://archive.org/download/MS_DOS_6.22_MICROSOFT/MS%20DOS%206.22.zip'
+
+  freedos:
+    description: "An open source iteration of DOS"
+    versions:
+      1.3-rc5:
+        url: https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.3/previews/1.3-rc5/FD13-FullUSB.zip
+
+  windows:
+    proprietary: True
+    description: "A group of proprietary graphical operating systems, by Microsoft"
+    versions:
+      NT 3.51:
+        url: 'https://winworldpc.com/download/9c67f2a9-a8ec-11ea-8b3c-fa163e9022f0/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      NT 4.0:
+        url: 'https://winworldpc.com/download/416031c2-ab18-c39a-11c3-a4e284a2c3a5/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      "2000":
+        url: 'https://winworldpc.com/download/413638c2-8d18-c39a-11c3-a4e284a2c3a5/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      Vista:
+        url: 'https://winworldpc.com/download/427424c3-9a18-c39a-11c3-a4e284a2c3a5/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      Neptune:
+        url: 'https://winworldpc.com/download/46c39b6a-7cc2-bbc3-9311-c3a4c2ac5a54/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      XP:
+        url: 'https://winworldpc.com/download/422f790a-18c3-9a11-c3a4-e284a2c3a570/from/c3ae6ee2-8099-713d-3411-c3a6e280947e'
+      "7":
+        url: 'https://dw.uptodown.com/dwn/b1GUY-_-pWrAOR03dOKW_2MLABYdGxGs4H6cDa7flXc4F6nbwemHAZhgwR0dNHstDyJT-TrR1BET9p1T0gq405IAJk7vCd6K47bJxmZA4hLSVUymzqAYEKEnmDlTjyKe/tqnn5XFoIVsOkLS6E52tc9mXAIOCSsc2fxKorYSBGgz3WsZRYEqq2TPFm3M3dL8QbIQaXP7REjPnwCGwBsZr-mA9oAViww8pFLhFJZmg9rjX1e38ucdq87IpB_GT7f2i/An3Bt7Gpge7wKB9gdYOuDqRB6QGLDA0JAOa1ROGxJyWwCbAOGKSsJXGFSFNKtY48PuudT_mtNkRGzWg0hdFq1facBVEpi5OkpBJzQiAMyhmV9U0ZuYA9jRlO8BsLlijn/'
+      "8.1":
+        url: 'https://software-download.microsoft.com/pr/Win8.1_English_x64.iso?t=4637a485-401f-427d-aaaf-6b600a2a2884&e=1608905822&h=f0f68a5f7b43e0d1e340ef089d64a5d7'
+      "10":
+        url: 'https://go.microsoft.com/fwlink/?LinkId=691209'
+
+  chromiumos:
+    description: "Open source implementation of Google's ChromeOS"
+    versions:
+      "20211219231228":
+        url: "https://chromium.arnoldthebat.co.uk/daily//CARMOS-20211219231228.img.7z"
+
+  freebsd:
+    description: "A Unix-like operating system descended from BSD"
+    versions:
+      # TODO: browser: true should make the url open in the browser instead of being directly downloaded.
+      v12.0:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/12.0/'
+      v12.1:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/12.1/'
+      v12.2:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/12.2/'
+      v12.3:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/12.3/'
+      v11.2:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/11.2/'
+      v11.3:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/11.3/'
+      v11.4:
+        browser: true
+        url: 'https://download.freebsd.org/ftp/releases/ISO-IMAGES/11.4/'
+
+  templeos:
+    description: "A biblical-themed operating system designed to be the Third Temple prophesied in the Bible"
+    versions:
+      latest:
+        url: 'https://templeos.org/Downloads/TempleOS.ISO'
+
+  ubuntu:
+    description: "A Linux distribution based on Debian composed (mostly) of open-source software."
+    versions:
+      "21.10":
+        url: "https://releases.ubuntu.com/21.10/ubuntu-21.10-desktop-amd64.iso"
+      "20.10":
+        url: "http://old-releases.ubuntu.com/releases/groovy/ubuntu-20.10-desktop-amd64.iso"
+      "20.04":
+        url: "http://old-releases.ubuntu.com/releases/focal/ubuntu-20.04-beta-desktop-amd64.iso"
+      "19.10":
+        url: "http://old-releases.ubuntu.com/releases/eoan/ubuntu-19.10-desktop-amd64.iso"
+      "19.04":
+        url: "http://old-releases.ubuntu.com/releases/disco/ubuntu-19.04-desktop-amd64.iso"
+      "18.10":
+        url: "http://old-releases.ubuntu.com/releases/cosmic/ubuntu-18.10-desktop-amd64.iso"
+
+  archlinux:
+    description: "An independently developed Linux distribution that follows a rolling-release model."
+    versions:
+      "2022.01.01":
+        url: "http://mirror.rackspace.com/archlinux/iso/2022.01.01/archlinux-2022.01.01-x86_64.iso"
+      latest:
+        url: "http://mirror.rackspace.com/archlinux/iso/latest/"
+        browser: true
+
+  archlinux-gui:
+    description: "A fast, offline graphical installer for Vanilla Arch Linux"
+    versions:
+      all:
+        url: "https://sourceforge.net/projects/arch-linux-gui/files/"
+        browser: true
+
+meta:
+  authors:
+    - baris-inandi
+  about: |
+    A community driven project on bringing many OSs into one package. Now with less calories! Made with <3 by @baris-inandi
+  updated: 3-6-2022

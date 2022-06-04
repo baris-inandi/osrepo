@@ -1,0 +1,16 @@
+{
+    "repo": {
+        "name": "microsoft",
+        "entries": [{
+            "identifier": "windows",
+            "description": "a shitty os by microsoft",
+            "is_proprietary": true,
+            "versions": [{
+                "version": "11",
+                "is_proprietary": true,
+                "is_prerelease": false,
+                "download_url": "https://microsoft.com/win11.iso/",
+            }],
+        }]
+    }
+}
