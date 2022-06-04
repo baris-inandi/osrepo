@@ -20,5 +20,5 @@ pub mod utils;
 use db::Db;
 
 fn main() {
-    Db::new("~/code/osrepo/test.yml");
+    Db::new("osrepo.yml");
 }

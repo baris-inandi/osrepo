@@ -1,5 +1,0 @@
-include:
-  - ~/code/osrepo/repos/apple.yml
-  - ~/code/osrepo/repos/extra.yml
-  - ~/code/osrepo/repos/gnulinux.yml
-  - ~/code/osrepo/repos/microsoft.yml

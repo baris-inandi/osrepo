@@ -1,6 +1,11 @@
+#[derive(serde::Deserialize, Debug)]
+
 pub struct Version {
-    version: String,
-    download_url: String,
-    is_proprietary: bool,
-    is_prerelease: bool,
+    url: String,
+    arch: Option<String>,
+    is_prerelease: Option<bool>,
 }
+
+/*
+    impl download etc.
+*/

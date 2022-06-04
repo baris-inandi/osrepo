@@ -1,0 +1,12 @@
+meta:
+    name: test
+    description: test
+entries:
+    archlinux:
+       description: "Arch Linux"
+       is_proprietary: false
+       versions:
+          rolling:
+              url: "https://mirrors.kernel.org/archlinux/iso/latest/archlinux-rolling-latest.iso"
+              arch: "x86_64"
+              is_prerelease: false
