@@ -20,5 +20,6 @@ pub mod utils;
 use db::Db;
 
 fn main() {
-    Db::new("osrepo.yml");
+    let x = Db::new("osrepo.yml").unwrap();
+    println!("{:?}", x);
 }

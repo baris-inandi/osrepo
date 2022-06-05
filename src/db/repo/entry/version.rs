@@ -1,9 +1,9 @@
-#[derive(serde::Deserialize)]
-
+#[derive(Debug)]
 pub struct Version {
-    url: String,
-    arch: Option<String>,
-    is_prerelease: Option<bool>,
+    pub version_identifier: String,
+    pub url: String,
+    pub arch: String,
+    pub is_prerelease: bool,
 }
 
 /*

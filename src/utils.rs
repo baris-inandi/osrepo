@@ -18,9 +18,14 @@ pub fn expand_tilde<P: AsRef<Path>>(path_user_input: P) -> Result<PathBuf, std::
     return dirs::home_dir()
         .map(|mut h| {
             if h == Path::new("/") {
-                p.strip_prefix("~").unwrap().to_path_buf()
+                p.strip_prefix("~")
+                    .expect("utils::expand_tilde: invlid path")
+                    .to_path_buf()
             } else {
-                h.push(p.strip_prefix("~/").unwrap());
+                h.push(
+                    p.strip_prefix("~/")
+                        .expect("utils::expand_tilde: invlid path"),
+                );
                 return h;
             }
         })
