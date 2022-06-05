@@ -1,4 +1,4 @@
-meta:
+pragma:
     name: test
     description: test
 entries:

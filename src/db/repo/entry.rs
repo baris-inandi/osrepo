@@ -2,7 +2,7 @@ mod version;
 use std::collections::HashMap;
 use version::Version;
 
-#[derive(serde::Deserialize, Debug)]
+#[derive(serde::Deserialize)]
 pub struct Entry {
     description: Option<String>,
     is_proprietary: Option<bool>,
