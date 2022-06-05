@@ -21,5 +21,7 @@ use db::Db;
 
 fn main() {
     let x = Db::new("osrepo.yml").unwrap();
-    println!("{:?}", x);
+    for k in x.entries.get("archlinux") {
+        println!("\n{}", k);
+    }
 }

@@ -9,3 +9,4 @@ edition = "2021"
 serde_yaml = "0.8.24"
 dirs = "4.0.0"
 serde = { version = "1.0.137", features = ["derive"] }
+colored = "2.0.0"

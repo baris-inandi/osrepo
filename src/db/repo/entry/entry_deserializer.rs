@@ -6,7 +6,7 @@ use std::collections::HashMap;
 pub struct EntryDeserializer {
     description: Option<String>,
     is_proprietary: Option<bool>,
-    versions: HashMap<String, VersionDeserializer>,
+    versions: Option<HashMap<String, VersionDeserializer>>,
 }
 
 impl EntryDeserializer {
@@ -25,11 +25,13 @@ impl EntryDeserializer {
                 Some(is_proprietary) => is_proprietary,
                 None => false,
             },
-            versions: self
-                .versions
-                .iter()
-                .map(|(k, v)| (k.clone(), v.to_version(k)))
-                .collect(),
+            versions: match &self.versions {
+                Some(versions) => versions
+                    .iter()
+                    .map(|(k, v)| (k.clone(), v.to_version(k)))
+                    .collect(),
+                None => HashMap::new(),
+            },
             identifier: String::from(identifier),
             repo_name: String::from(repo_name),
         };
