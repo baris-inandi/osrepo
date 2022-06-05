@@ -1,16 +1,16 @@
-use super::repo::entry_deserializer::EntryDeserializer;
-use super::repo::Repo;
-use super::repo_pragma::RepoPragma;
+use super::entry::entry_deserializer::EntryDeserializer;
+use super::pragma::pragma_deserializer::RepoPragmaDeserializer;
+use super::Repo;
 use std::collections::HashMap;
 
 #[derive(serde::Deserialize)]
 pub struct RepoDeserializer {
-    pub pragma: RepoPragma,
+    pub pragma: RepoPragmaDeserializer,
     entries: Option<HashMap<String, EntryDeserializer>>,
 }
 
 impl RepoDeserializer {
-    pub fn to_repo(&self, repo_name: &str) -> Repo {
+    pub fn to_repo(&self, repo_name: &str, repo_path: &str) -> Repo {
         let entries_option = self.entries.as_ref().map(|entries| {
             entries
                 .iter()
@@ -18,10 +18,7 @@ impl RepoDeserializer {
                 .collect()
         });
         return Repo {
-            pragma: RepoPragma {
-                name: self.pragma.name.clone(),
-                description: self.pragma.description.clone(),
-            },
+            pragma: self.pragma.to_pragma(repo_path),
             entries: match entries_option {
                 Some(entries) => entries,
                 None => HashMap::new(),

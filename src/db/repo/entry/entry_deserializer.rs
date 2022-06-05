@@ -1,5 +1,5 @@
-use super::entry::version_deserializer::VersionDeserializer;
-use super::entry::Entry;
+use super::version::version_deserializer::VersionDeserializer;
+use super::Entry;
 use std::collections::HashMap;
 
 #[derive(serde::Deserialize)]
@@ -14,7 +14,7 @@ impl EntryDeserializer {
         let allowed_chars: Vec<char> = "abcdefghijklmnopqrstuvwxyz1234567890-".chars().collect();
         for i in identifier.clone().chars() {
             let allowed = allowed_chars.contains(&i);
-            let x = allowed.then(|| true)
+            allowed.then(|| true)
             .expect(
                 &format!("Name of entry \"{}\" in repo \"{}\" is invalid: Entry names should be composed of English letters, numbers and hyphens only", identifier, repo_name)
             );

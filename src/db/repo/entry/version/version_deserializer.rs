@@ -1,4 +1,4 @@
-use super::version::Version;
+use super::Version;
 
 #[derive(serde::Deserialize)]
 pub struct VersionDeserializer {

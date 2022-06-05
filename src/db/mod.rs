@@ -1,15 +1,12 @@
-pub mod db_included_repo;
 pub mod repo;
-pub mod repo_deserializer;
-pub mod repo_pragma;
-use db_included_repo::DbIncludedRepo;
 use repo::entry::Entry;
+use repo::pragma::RepoPragma;
 use serde_yaml::Value;
 use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct Db {
-    pub includes: HashMap<String, DbIncludedRepo>,
+    pub includes: HashMap<String, RepoPragma>,
     pub entries: HashMap<String, Entry>,
 }
 
@@ -32,7 +29,7 @@ impl Db {
                 .as_str(),
             )
             .to_vec();
-        let mut includes: HashMap<String, DbIncludedRepo> = HashMap::new();
+        let mut includes: HashMap<String, RepoPragma> = HashMap::new();
         let mut db_entries: HashMap<String, Entry> = HashMap::new();
         for (idx, p) in repos_value.iter().enumerate() {
             let path = p.as_str().expect(&format!(
@@ -43,9 +40,8 @@ impl Db {
                 Some(repo) => repo,
                 None => continue,
             };
-            let db_included_repo = current_repo.to_db_included_repo(path);
             db_entries.extend(current_repo.entries);
-            includes.insert(current_repo.pragma.name.clone(), db_included_repo);
+            includes.insert(current_repo.pragma.name.clone(), current_repo.pragma);
         }
         return Ok(Db {
             includes,
