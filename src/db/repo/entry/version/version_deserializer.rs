@@ -1,5 +1,4 @@
 use super::Version;
-use crate::db::repo::entry::Entry;
 
 #[derive(serde::Deserialize)]
 pub struct VersionDeserializer {

@@ -21,6 +21,7 @@ use db::Db;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db = Db::new("osrepo.yml").unwrap();
+    println!();
     let archlinux = db.entry("archlinux")?;
     println!("{}", archlinux);
     println!();
