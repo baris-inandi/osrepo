@@ -16,7 +16,7 @@ impl EntryDeserializer {
             let allowed = allowed_chars.contains(&i);
             allowed.then(|| true)
             .expect(
-                &format!("Name of entry '{}' in repo '{}' is invalid: Entry names should be composed of English letters, numbers and hyphens only", identifier, repo_name)
+                &format!("Name of entry '{}' in repo '{}' is invalid: Entry names can be composed of lowercase English letters, numbers and hyphens only", identifier, repo_name)
             );
         }
         return Entry {
@@ -28,7 +28,7 @@ impl EntryDeserializer {
             versions: match &self.versions {
                 Some(versions) => versions
                     .iter()
-                    .map(|(k, v)| (k.clone(), v.to_version(k)))
+                    .map(|(k, v)| (k.clone(), v.to_version(k, &identifier, &repo_name)))
                     .collect(),
                 None => HashMap::new(),
             },

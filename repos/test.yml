@@ -4,9 +4,9 @@ pragma:
 entries:
     archlinux:
        description: "Arch Linux: A very minimal linux distro"
-       is_proprietary: false
+       is_proprietary: true
        versions:
           rolling:
               url: "https://mirrors.kernel.org/archlinux/iso/latest/archlinux-rolling-latest.iso"
               arch: "x86_64"
-              is_prerelease: false
+              is_prerelease: true

@@ -17,7 +17,7 @@ pub struct Entry {
 impl std::fmt::Display for Entry {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let proprietary_text = match self.is_proprietary {
-            true => "[proprietary] ".red(),
+            true => " [proprietary]".red(),
             false => "".white(),
         };
         let repo = self.repo_name.blue().bold();
@@ -35,10 +35,10 @@ impl std::fmt::Display for Entry {
             let versions = self.versions.keys().into_iter().len();
             version_text = format!("[{} versions available]", versions);
         };
-        let version_text_color = version_text.green();
+        let version_text_color = version_text.yellow();
         return write!(
             f,
-            "{}/{} {}\n{}{}",
+            "{}/{} {}{}\n{}",
             repo, self.identifier, version_text_color, proprietary_text, description
         );
     }

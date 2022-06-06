@@ -22,7 +22,9 @@ use db::Db;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db = Db::new("osrepo.yml").unwrap();
     let archlinux = db.entry("archlinux")?;
-    let archlinux_rolling = archlinux.version("")?;
+    println!("{}", archlinux);
+    println!();
+    let archlinux_rolling = archlinux.version("rolling")?;
     println!("{}", archlinux_rolling);
     Ok(())
 }
