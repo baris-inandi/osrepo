@@ -7,3 +7,9 @@ pub struct Version {
     pub arch: String,
     pub is_prerelease: bool,
 }
+
+impl std::fmt::Display for Version {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        return write!(f, "");
+    }
+}

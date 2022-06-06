@@ -19,9 +19,10 @@ mod db;
 pub mod utils;
 use db::Db;
 
-fn main() {
-    let x = Db::new("osrepo.yml").unwrap();
-    for k in x.entries.get("archlinux") {
-        println!("\n{}", k);
-    }
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let db = Db::new("osrepo.yml").unwrap();
+    let archlinux = db.entry("archlinux")?;
+    let archlinux_rolling = archlinux.version("")?;
+    println!("{}", archlinux_rolling);
+    Ok(())
 }

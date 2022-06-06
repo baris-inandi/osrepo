@@ -14,14 +14,12 @@ pub struct Repo {
 
 impl Repo {
     pub fn new(filepath: &str) -> Option<Repo> {
-        let file = crate::utils::expand_open_file(filepath).expect(&format!(
-            "Cannot open repo \"{}\", does it exist?",
-            filepath
-        ));
+        let file = crate::utils::expand_open_file(filepath)
+            .expect(&format!("Cannot open repo '{}', does it exist?", filepath));
         let value: Value =
-            serde_yaml::from_reader(file).expect(&format!("Cannot parse yaml \"{}\"", filepath));
+            serde_yaml::from_reader(file).expect(&format!("Cannot parse yaml '{}'", filepath));
         let repo_deserializer: RepoDeserializer = serde_yaml::from_value(value)
-            .expect(&format!("Cannot deserialize repo \"{}\"", &filepath));
+            .expect(&format!("Cannot deserialize repo '{}'", &filepath));
         let repo = repo_deserializer.to_repo(&repo_deserializer.pragma.name.clone(), &filepath);
         return Some(repo);
     }

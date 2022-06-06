@@ -16,7 +16,7 @@ impl EntryDeserializer {
             let allowed = allowed_chars.contains(&i);
             allowed.then(|| true)
             .expect(
-                &format!("Name of entry \"{}\" in repo \"{}\" is invalid: Entry names should be composed of English letters, numbers and hyphens only", identifier, repo_name)
+                &format!("Name of entry '{}' in repo '{}' is invalid: Entry names should be composed of English letters, numbers and hyphens only", identifier, repo_name)
             );
         }
         return Entry {

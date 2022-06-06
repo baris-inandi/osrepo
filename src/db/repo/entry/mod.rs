@@ -2,8 +2,10 @@ pub mod entry_deserializer;
 pub mod version;
 use colored::Colorize;
 use std::collections::HashMap;
+use version::Version;
 
 #[derive(Debug)]
+
 pub struct Entry {
     pub description: Option<String>,
     pub is_proprietary: bool,
@@ -39,5 +41,19 @@ impl std::fmt::Display for Entry {
             "{}/{} {}\n{}{}",
             repo, self.identifier, version_text_color, proprietary_text, description
         );
+    }
+}
+
+impl Entry {
+    pub fn version(&self, version_identifier: &str) -> Result<&Version, std::io::Error> {
+        return self.versions.get(version_identifier).ok_or_else(|| {
+            std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                format!(
+                    "Version '{}' not found in entry '{}'.",
+                    &version_identifier, &self.identifier
+                ),
+            )
+        });
     }
 }

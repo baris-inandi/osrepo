@@ -13,17 +13,20 @@ pub struct Db {
 impl Db {
     pub fn new(filepath: &str) -> Result<Db, serde_yaml::Error> {
         let file = crate::utils::expand_open_file(filepath).expect(&format!(
-            "Cannot open db file \"{}\", does it exist?",
+            "Cannot open db file '{}', does it exist?",
             &filepath
         ));
         let value: Value = serde_yaml::from_reader(file)?;
         let repos_value = value
             .get("include")
-            .expect(&format!("Database file at \"{}\" must contain an include key", &filepath))
+            .expect(&format!(
+                "Database file at '{}' must contain an include key",
+                &filepath
+            ))
             .as_sequence()
             .expect(
                 format!(
-                    "Database file at \"{}\" must include a list of repositories under key \"include\"",
+                    "Database file at '{}' must include a list of repositories under key 'include'",
                     &filepath
                 )
                 .as_str(),
@@ -33,7 +36,7 @@ impl Db {
         let mut db_entries: HashMap<String, Entry> = HashMap::new();
         for (idx, p) in repos_value.iter().enumerate() {
             let path = p.as_str().expect(&format!(
-                "Database file at \"{}\": key \"include\" does not contain a string at index {}.",
+                "Database file at '{}': key 'include' does not contain a string at index {}.",
                 &filepath, &idx
             ));
             let current_repo = match repo::Repo::new(path) {
@@ -46,6 +49,15 @@ impl Db {
         return Ok(Db {
             includes,
             entries: db_entries,
+        });
+    }
+
+    pub fn entry(&self, identifier: &str) -> Result<&Entry, std::io::Error> {
+        return self.entries.get(identifier).ok_or_else(|| {
+            std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                format!("Entry '{}' not found in database.", &identifier),
+            )
         });
     }
 }
