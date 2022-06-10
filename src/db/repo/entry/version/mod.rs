@@ -1,3 +1,4 @@
+pub mod download;
 pub mod version_deserializer;
 use colored::Colorize;
 
@@ -14,10 +15,10 @@ pub struct Version {
 impl std::fmt::Display for Version {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let is_prerelease = match self.is_prerelease {
-            true => " [pre]".red(),
+            true => " [prerelease]".red(),
             false => "".white(),
         };
-        let arch = self.arch.purple();
+        let arch = format!("[{}]", self.arch).purple();
         let version_identifier = self.version_identifier.yellow();
         let parent_repo = self.parent_repo.blue().bold();
         return write!(

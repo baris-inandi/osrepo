@@ -19,7 +19,8 @@ mod db;
 pub mod utils;
 use db::Db;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db = Db::new("osrepo.yml").unwrap();
     println!();
     let archlinux = db.entry("archlinux")?;
@@ -27,5 +28,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!();
     let archlinux_rolling = archlinux.version("rolling")?;
     println!("{}", archlinux_rolling);
+    archlinux_rolling.download(&db.client).await?;
     Ok(())
 }

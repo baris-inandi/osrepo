@@ -1,6 +1,7 @@
 pub mod repo;
 use repo::entry::Entry;
 use repo::pragma::RepoPragma;
+use reqwest::Client;
 use serde_yaml::Value;
 use std::collections::HashMap;
 
@@ -8,6 +9,7 @@ use std::collections::HashMap;
 pub struct Db {
     pub includes: HashMap<String, RepoPragma>,
     pub entries: HashMap<String, Entry>,
+    pub client: Client,
 }
 
 impl Db {
@@ -49,6 +51,7 @@ impl Db {
         return Ok(Db {
             includes,
             entries: db_entries,
+            client: Client::new(),
         });
     }
 
