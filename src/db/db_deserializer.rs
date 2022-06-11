@@ -7,3 +7,8 @@ pub struct DbDeserializer {
     pub include: Option<HashMap<RepoPragma, HashMap<String, EntryDeserializer>>>,
     pub update_url: Option<String>,
 }
+
+#[derive(serde::Deserialize)]
+pub struct MinimalDbDeserializer {
+    pub update_url: Option<String>,
+}

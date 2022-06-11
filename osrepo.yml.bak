@@ -1,0 +1,25 @@
+include:
+    { repo: gnulinux, description: i'd like to interject for a moment }:
+        archlinux:
+            description: "Arch Linux: A very minimal linux distro. (btw)"
+            versions:
+               rolling: { is_prerelease: true, url: "https://archlinux.org/download/iso/latest/arch.iso" }
+               all: { arch: "all", url: "https://archlinux.org/download/iso/latest/arch.iso" }
+        debian:
+            description: "Debian is the grandfather distro and its very stable"
+            versions:
+                bullseye: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+                buster: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+                stretch: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+                jessie: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+                wheezy: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+
+    { repo: microsoft, description: windows bad }:
+        windows:
+            description: "Microsoft Windows is a bloated operating system by Microsoft."
+            proprietary: true
+            versions:
+                "11": { browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=11" }
+                "10": { browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=10" }
+
+update_url: "https://raw.githubusercontent.com/baris-inandi/osrepo/main/osrepo.yml"
