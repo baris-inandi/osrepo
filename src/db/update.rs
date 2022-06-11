@@ -11,7 +11,11 @@ impl Db {
                 crate::utils::download::download(&self.client, url, &self.path)
                     .await
                     .unwrap();
-                
+                println!("Download finished.");
+                println!("Testing database...");
+                // TODO: perform testing here
+                // let new_db = Db::new(&self.path);
+                // new_db.load_entries();
             }
             None => println!("No update url found"),
         }
