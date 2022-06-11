@@ -2,10 +2,10 @@ use super::version::version_deserializer::VersionDeserializer;
 use super::Entry;
 use std::collections::HashMap;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, Debug)]
 pub struct EntryDeserializer {
     description: Option<String>,
-    is_proprietary: Option<bool>,
+    proprietary: Option<bool>,
     versions: Option<HashMap<String, VersionDeserializer>>,
 }
 
@@ -21,8 +21,8 @@ impl EntryDeserializer {
         }
         return Entry {
             description: self.description.clone(),
-            is_proprietary: match self.is_proprietary {
-                Some(is_proprietary) => is_proprietary,
+            is_proprietary: match self.proprietary {
+                Some(proprietary) => proprietary,
                 None => false,
             },
             versions: match &self.versions {

@@ -1,10 +1,11 @@
 use super::Version;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, Debug)]
 pub struct VersionDeserializer {
     url: String,
     arch: Option<String>,
     is_prerelease: Option<bool>,
+    browser: Option<bool>,
 }
 
 impl VersionDeserializer {
@@ -34,6 +35,10 @@ impl VersionDeserializer {
             },
             is_prerelease: match self.is_prerelease {
                 Some(is_prerelease) => is_prerelease,
+                None => false,
+            },
+            browser: match self.browser {
+                Some(browser) => browser,
                 None => false,
             },
             parent_identifier: String::from(parent_identifier),

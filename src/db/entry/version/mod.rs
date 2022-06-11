@@ -9,6 +9,7 @@ pub struct Version {
     pub version_identifier: String,
     pub url: String,
     pub arch: String,
+    pub browser: bool,
     pub is_prerelease: bool,
 }
 

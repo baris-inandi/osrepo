@@ -1,15 +1,20 @@
-pub mod repo;
-use repo::entry::Entry;
-use repo::pragma::RepoPragma;
+pub mod db_deserializer;
+pub mod entry;
+pub mod repo_pragma;
+pub mod update;
+use db_deserializer::DbDeserializer;
+use entry::Entry;
 use reqwest::Client;
 use serde_yaml::Value;
 use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct Db {
-    pub includes: HashMap<String, RepoPragma>,
+    pub includes: HashMap<String, String>,
     pub entries: HashMap<String, Entry>,
     pub client: Client,
+    pub update_url: Option<String>,
+    pub path: String,
 }
 
 impl Db {
@@ -19,39 +24,27 @@ impl Db {
             &filepath
         ));
         let value: Value = serde_yaml::from_reader(file)?;
-        let repos_value = value
-            .get("include")
-            .expect(&format!(
-                "Database file at '{}' must contain an include key",
-                &filepath
-            ))
-            .as_sequence()
-            .expect(
-                format!(
-                    "Database file at '{}' must include a list of repositories under key 'include'",
-                    &filepath
-                )
-                .as_str(),
-            )
-            .to_vec();
-        let mut includes: HashMap<String, RepoPragma> = HashMap::new();
+        let deserializer: DbDeserializer = serde_yaml::from_value(value)?;
+        let mut includes: HashMap<String, String> = HashMap::new();
         let mut db_entries: HashMap<String, Entry> = HashMap::new();
-        for (idx, p) in repos_value.iter().enumerate() {
-            let path = p.as_str().expect(&format!(
-                "Database file at '{}': key 'include' does not contain a string at index {}.",
-                &filepath, &idx
-            ));
-            let current_repo = match repo::Repo::new(path) {
-                Some(repo) => repo,
-                None => continue,
-            };
-            db_entries.extend(current_repo.entries);
-            includes.insert(current_repo.pragma.name.clone(), current_repo.pragma);
+        match deserializer.include {
+            Some(i) => {
+                for (repo_pragma, entries) in i {
+                    includes.insert(repo_pragma.repo.clone(), repo_pragma.description);
+                    for (identifier, entry_deserializer) in entries {
+                        let entry = entry_deserializer.to_entry(&identifier, &repo_pragma.repo);
+                        db_entries.insert(identifier, entry);
+                    }
+                }
+            }
+            None => {}
         }
         return Ok(Db {
             includes,
             entries: db_entries,
             client: Client::new(),
+            update_url: deserializer.update_url,
+            path: String::from(filepath),
         });
     }
 

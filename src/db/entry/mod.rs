@@ -9,7 +9,7 @@ use version::Version;
 pub struct Entry {
     pub description: Option<String>,
     pub is_proprietary: bool,
-    pub versions: HashMap<String, version::Version>,
+    pub versions: HashMap<String, Version>,
     pub identifier: String,
     pub repo_name: String,
 }
