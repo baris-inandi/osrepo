@@ -11,6 +11,7 @@ pub struct Version {
     pub arch: String,
     pub browser: bool,
     pub is_prerelease: bool,
+    pub ext: String,
 }
 
 impl std::fmt::Display for Version {

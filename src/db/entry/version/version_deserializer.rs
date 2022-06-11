@@ -2,10 +2,11 @@ use super::Version;
 
 #[derive(serde::Deserialize, Debug)]
 pub struct VersionDeserializer {
-    url: String,
-    arch: Option<String>,
-    is_prerelease: Option<bool>,
-    browser: Option<bool>,
+    url: String,              // download url of the version
+    arch: Option<String>,     // architecture of the target image (x86_64, arm)
+    prerelease: Option<bool>, // notify the user that this version is a prerelease
+    browser: Option<bool>, // option to open url in browser, useful for dynamically generated urls (eg. windows)
+    ext: Option<String>,   // file extension for file download (iso, img)
 }
 
 impl VersionDeserializer {
@@ -25,20 +26,23 @@ impl VersionDeserializer {
                 &format!("Version identifier '{}' is invalid: Version identifiers can be composed of lowercase English letters, numbers and the following symbols: _-.^=<>()", version_identifier)
             );
         }
-        let arch_option = self.arch.clone();
         return Version {
             version_identifier: String::from(version_identifier),
             url: self.url.clone(),
-            arch: match arch_option {
-                Some(arch) => arch,
+            arch: match &self.arch {
+                Some(arch) => String::from(arch),
                 None => String::from("x86_64"),
             },
-            is_prerelease: match self.is_prerelease {
-                Some(is_prerelease) => is_prerelease,
+            ext: match &self.ext {
+                Some(ext) => String::from(ext),
+                None => String::from("iso"),
+            },
+            is_prerelease: match &self.prerelease {
+                Some(prerelease) => prerelease.to_owned(),
                 None => false,
             },
-            browser: match self.browser {
-                Some(browser) => browser,
+            browser: match &self.browser {
+                Some(browser) => browser.to_owned(),
                 None => false,
             },
             parent_identifier: String::from(parent_identifier),
