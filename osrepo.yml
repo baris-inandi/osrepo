@@ -1,25 +1,103 @@
 include:
     { repo: gnulinux, description: i'd like to interject for a moment }:
-        archlinux:
-            description: "Arch Linux: A very minimal linux distro. (btw)"
-            versions:
-               rolling: { is_prerelease: true, url: "https://archlinux.org/download/iso/latest/arch.iso" }
-               all: { arch: "all", url: "https://archlinux.org/download/iso/latest/arch.iso" }
-        debian:
-            description: "Debian is the grandfather distro and its very stable"
-            versions:
-                bullseye: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
-                buster: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
-                stretch: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
-                jessie: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
-                wheezy: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+        { entry: archlinux, description: "Arch Linux: A very minimal linux distro (btw)" }:
+            rolling: { is_prerelease: true, url: "https://archlinux.org/download/iso/latest/arch.iso" }
+            all: { arch: "all", url: "https://archlinux.org/download/iso/latest/arch.iso" }
+        { entry: archlinux, description: "Arch Linux: A very minimal linux distro (btw)" }:
+            rolling: { is_prerelease: true, url: "https://archlinux.org/download/iso/latest/arch.iso" }
+            all: { arch: "all", url: "https://archlinux.org/download/iso/latest/arch.iso" }
+        { entry: debian, description: "Debian is the grandfather distro and its very stable" }:
+            bullseye: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+            buster: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+            stretch: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+            jessie: { url: "https:/debian.org/debian-installer/amd64/debian.iso" }
+            wheezy: { url: "https:/debian.org/debiaon-installer/amd64/debian.iso" }
+        { entry: ubuntu, description: "Ubuntu is a Debian-based distro" }:
+            bullseye: { url: "https://ubuntu.com/ubuntu-installer/amd64/ubuntu-installer-amd64.iso" }
+            buster: { url: "https://ubuntu.com/ubuntu-installer/amd64/ubuntu-installer-amd64.iso" }
+            stretch: { url: "https://ubuntu.com/ubuntu-installer/amd64/ubuntu-installer-amd64.iso" }
+            jessie: { url: "https://ubuntu.com/ubuntu-installer/amd64/ubuntu-installer-amd64.iso" }
+            wheezy: { url: "https://ubuntu.com/ubuntu-installer/amd64/ubuntu-installer-amd64.iso" }
+        { entry: fedora, description: "Fedora is a Red Hat-based distro" }:
+            v30: { url: "https://getfedora.org/linux/releases/Workstation/32/x86_64/iso/Fedora-Workstation-Live-x86_64-33-1.2.iso" }
+            v31: { url: "https://getfedora.org/linux/releases/Workstation/33/x86_64/iso/Fedora-Workstation-Live-x86_64-33-1.2.iso" }
+            v32: { url: "https://getfedora.org/linux/releases/Workstation/34/x86_64/iso/Fedora-Workstation-Live-x86_64-34-1.2.iso" }
+            v33: { url: "https://getfedora.org/linux/releases/Workstation/35/x86_64/iso/Fedora-Workstation-Live-x86_64-35-1.2.iso" }
+            v34: { url: "https://getfedora.org/linux/releases/Workstation/36/x86_64/iso/Fedora-Workstation-Live-x86_64-36-1.2.iso" }
+            v35: { url: "https://getfedora.org/linux/releases/Workstation/37/x86_64/iso/Fedora-Workstation-Live-x86_64-37-1.2.iso" }
+            v36: { url: "https://getfedora.org/linux/releases/Workstation/38/x86_64/iso/Fedora-Workstation-Live-x86_64-38-1.2.iso" }
+        { entry: gentoo, description: "Gentoo is a Linux-based distro" }:
+            rolling: { url: "https://get.gentoo.org/releases/amd64/autobuilds/latest-install-x86_64-systemd/install-x86_64-systemd.iso" }
+            stable: { url: "https://get.gentoo.org/releases/amd64/autobuilds/latest-install-x86_64-systemd/install-x86_64-systemd.iso" }
+            testing: { url: "https://get.gentoo.org/releases/amd64/autobuilds/latest-install-x86_64-systemd/install-x86_64-systemd.iso" }
+            unstable: { url: "https://get.gentoo.org/releases/amd64/autobuilds/latest-install-x86_64-systemd/install-x86_64-systemd.iso" }
+        { entry: opensuse, description: "OpenSUSE is a Linux-based distro" }:
+            stable: { url: "https://download.opensuse.org/distribution/leap/42.2/iso/openSUSE-Leap-42.2-DVD-x86_64.iso" }
+            testing: { url: "https://download.opensuse.org/distribution/leap/42.2/iso/openSUSE-Leap-42.2-DVD-x86_64.iso" }
+            unstable: { url: "https://download.opensuse.org/distribution/leap/42.2/iso/openSUSE-Leap-42.2-DVD-x86_64.iso" }
+        { entry: linuxmint, description: "Mint is mint" }:
+            rolling: { url: "https://mirrors.kernel.org/ubuntu/pool/main/m/mint-meta-release/mint-meta-release_1.0-1_amd64.deb" }
+            stable: { url: "https://mirrors.kernel.org/ubuntu/pool/main/m/mint-meta-release/mint-meta-release_1.0-1_amd64.deb" }
+            testing: { url: "https://mirrors.kernel.org/ubuntu/pool/main/m/mint-meta-release/mint-meta-release_1.0-1_amd64.deb" }
+            unstable: { url: "https://mirrors.kernel.org/ubuntu/pool/main/m/mint-meta-release/mint-meta-release_1.0-1_amd64.deb" }
 
     { repo: microsoft, description: windows bad }:
-        windows:
-            description: "Microsoft Windows is a bloated operating system by Microsoft."
-            proprietary: true
-            versions:
-                "11": { browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=11" }
-                "10": { browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=10" }
+        { entry: windows, description: "Microsoft Windows is a bloated operating system by Microsoft.", proprietary: true }:
+            win11: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=11" }
+            win10: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=10" }
+            win8: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=8" }
+            win7: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=7" }
+            winvista: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=6" }
+            winxp: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=5" }
+            win2000: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=4" }
+            win2003: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=3" }
+            win98: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=2" }
+            win95: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=1" }
+            winme: { ext: "iso", browser: true, url: "https://www.microsoft.com/en-us/download/details.aspx?id=0" }
+
+    { repo: bsd, description: "BSD is a collection of software that is free to use and distribute." }:
+        { entry: freebsd, description: "FreeBSD is a free BSD-based operating system" }:
+            stable: { arch: i386, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-i386-RELEASE-DVD-1.iso" }
+            stable-x86_64: { arch: x86_64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-x86_64-RELEASE-DVD-1.iso" }
+            stable-amd64: { arch: amd64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-amd64-RELEASE-DVD-1.iso" }
+            stable-arm: { arch: arm, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-arm-RELEASE-DVD-1.iso" }
+            stable-arm64: { arch: arm64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-arm64-RELEASE-DVD-1.iso" }
+            stable-aarch64: { arch: aarch64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-aarch64-RELEASE-DVD-1.iso" }
+            stable-mips: { arch: mips, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-mips-RELEASE-DVD-1.iso" }
+            stable-mips64: { arch: mips64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-mips64-RELEASE-DVD-1.iso" }
+            stable-mips64el: { arch: mips64el, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-mips64el-RELEASE-DVD-1.iso" }
+            stable-mipsel: { arch: mipsel, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-mipsel-RELEASE-DVD-1.iso" }
+            stable-powerpc: { arch: powerpc, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-powerpc-RELEASE-DVD-1.iso" }
+            stable-powerpc64: { arch: powerpc64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-powerpc64-RELEASE-DVD-1.iso" }
+            stable-powerpc64le: { arch: powerpc64le, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-powerpc64le-RELEASE-DVD-1.iso" }
+            stable-sparc: { arch: sparc, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-sparc-RELEASE-DVD-1.iso" }
+            stable-sparc64: { arch: sparc64, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-sparc64-RELEASE-DVD-1.iso" }
+            stable-sparc64v: { arch: sparc64v, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-sparc64v-RELEASE-DVD-1.iso" }
+            stable-sparcv9: { arch: sparcv9, url: "https://www.freebsd.org/releases/ISO-IMAGES/10.0/FreeBSD-10-sparcv9-RELEASE-DVD-1.iso" }
+        { entry: openbsd, description: "OpenBSD is a free BSD-based operating system" }:
+            stable: { arch: i386, url: "https://www.openbsd.org/ftp/releases/amd64/release/OpenBSD-amd64-6.6.1.iso" }
+            stable-x86_64: { arch: x86_64, url: "https://www.openbsd.org/ftp/releases/amd64/release/OpenBSD-amd64-6.6.1.iso" }
+            stable-amd64: { arch: amd64, url: "https://www.openbsd.org/ftp/releases/amd64/release/OpenBSD-amd64-6.6.1.iso" }
+            stable-arm: { arch: arm, url: "https://www.openbsd.org/ftp/releases/arm/release/OpenBSD-arm-6.6.1.iso" }
+            stable-arm64: { arch: arm64, url: "https://www.openbsd.org/ftp/releases/arm64/release/OpenBSD-arm64-6.6.1.iso" }
+            stable-aarch64: { arch: aarch64, url: "https://www.openbsd.org/ftp/releases/aarch64/release/OpenBSD-aarch64-6.6.1.iso" }
+            stable-mips: { arch: mips, url: "https://www.openbsd.org/ftp/releases/mips/release/OpenBSD-mips-6.6.1.iso" }
+            stable-mips64: { arch: mips64, url: "https://www.openbsd.org/ftp/releases/mips64/release/OpenBSD-mips64-6.6.1.iso" }
+            stable-mips64el: { arch: mips64el, url: "https://www.openbsd.org/ftp/releases/mips64el/release/OpenBSD-mips64el-6.6.1.iso" }
+            stable-mipsel: { arch: mipsel, url: "https://www.openbsd.org/ftp/releases/mipsel/release/OpenBSD-mipsel-6.6.1.iso" }
+            stable-powerpc: { arch: powerpc, url: "https://www.openbsd.org/ftp/releases/powerpc/release/OpenBSD-powerpc-6.6.1.iso" }
+            stable-powerpc64: { arch: powerpc64, url: "https://www.openbsd.org/ftp/releases/powerpc64/release/OpenBSD-powerpc64-6.6.1.iso" }
+            stable-powerpc64le: { arch: powerpc64le, url: "https://www.openbsd.org/ftp/releases/powerpc64le/release/OpenBSD-powerpc64le-6.6.1.iso" }
+            stable-sparc: { arch: sparc, url: "https://www.openbsd.org/ftp/releases/sparc/release/OpenBSD-sparc-6.6.1.iso" }
+            stable-sparc64: { arch: sparc64, url: "https://www.openbsd.org/ftp/releases/sparc64/release/OpenBSD-sparc64-6.6.1.iso" }
+            stable-sparc64v: { arch: sparc64v, url: "https://www.openbsd.org/ftp/releases/sparc64v/release/OpenBSD-sparc64v-6.6.1.iso" }
+            stable-sparcv9: { arch: sparcv9, url: "https://www.openbsd.org/ftp/releases/sparcv9/release/OpenBSD-sparcv9-6.6.1.iso" }
+        { entry: netbsd, description: "NetBSD is a free BSD-based operating system" }:
+            stable: { arch: i386, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/i386/NetBSD-current.iso" }
+            stable-x86_64: { arch: x86_64, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/amd64/NetBSD-current.iso" }
+            stable-amd64: { arch: amd64, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/amd64/NetBSD-current.iso" }
+            stable-arm: { arch: arm, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/arm/NetBSD-current.iso" }
+            stable-arm64: { arch: arm64, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/arm64/NetBSD-current.iso" }
+            stable-aarch64: { arch: aarch64, url: "https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/aarch64/NetBSD-current.iso" }
 
 update_url: "https://raw.githubusercontent.com/baris-inandi/osrepo/main/osrepo.yml"

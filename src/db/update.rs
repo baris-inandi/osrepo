@@ -25,7 +25,7 @@ impl Db {
                     })?;
                 println!("Download finished");
                 println!("Testing updated database...");
-                let mut new_db = Db::new(&self.path).or_else(|_| {
+                Db::new(&self.path).or_else(|_| {
                     println!(
                         "{}",
                         "Test failed: New database cannot be instantiated".red()
@@ -33,18 +33,7 @@ impl Db {
                     self.rollback();
                     return Err(std::io::Error::new(
                         std::io::ErrorKind::Other,
-                        "New database failed test: Cannot instantiate Db",
-                    ));
-                })?;
-                new_db.load_entries().or_else(|_| {
-                    println!(
-                        "{}",
-                        "Test failed: Cannot load entries form new database".red()
-                    );
-                    self.rollback();
-                    return Err(std::io::Error::new(
-                        std::io::ErrorKind::Other,
-                        "New database failed test: Cannot load entries",
+                        "New database failed test: Cannot load Db",
                     ));
                 })?;
                 println!("{}", "Updated database successfully".green());

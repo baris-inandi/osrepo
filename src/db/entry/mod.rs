@@ -1,4 +1,4 @@
-pub mod entry_deserializer;
+pub mod entry_pragma;
 pub mod version;
 use colored::Colorize;
 use std::collections::HashMap;

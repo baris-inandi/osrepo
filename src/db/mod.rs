@@ -2,7 +2,8 @@ pub mod db_deserializer;
 pub mod entry;
 pub mod repo_pragma;
 pub mod update;
-use db_deserializer::{DbDeserializer, MinimalDbDeserializer};
+use db_deserializer::DbDeserializer;
+use entry::version::Version;
 use entry::Entry;
 use reqwest::Client;
 use serde_yaml::Value;
@@ -16,8 +17,6 @@ pub struct Db {
     pub update_url: Option<String>,
     pub path: String,
     pub backup_path: String,
-    pub serde_value: serde_yaml::Value,
-    pub is_entries_loaded: bool,
 }
 
 impl Db {
@@ -27,54 +26,48 @@ impl Db {
             &filepath
         ));
         let value: Value = serde_yaml::from_reader(file)?;
-        let minimal: MinimalDbDeserializer = serde_yaml::from_value(value.clone())?;
         let path = String::from(filepath);
-        return Ok(Db {
-            includes: HashMap::new(),
-            entries: HashMap::new(),
-            client: Client::new(),
-            update_url: minimal.update_url,
-            path: path.clone(),
-            backup_path: format!("{}.bak", &path),
-            serde_value: value,
-            is_entries_loaded: false,
-        });
-    }
-
-    pub fn load_entries(&mut self) -> Result<&mut Db, serde_yaml::Error> {
-        let deserializer: DbDeserializer = serde_yaml::from_value(self.serde_value.clone())?;
+        let deserializer: DbDeserializer = serde_yaml::from_value(value)?;
         let mut includes: HashMap<String, String> = HashMap::new();
         let mut db_entries: HashMap<String, Entry> = HashMap::new();
         match deserializer.include {
             Some(i) => {
                 for (repo_pragma, entries) in i {
                     includes.insert(repo_pragma.repo.clone(), repo_pragma.description);
-                    for (identifier, entry_deserializer) in entries {
-                        let entry = entry_deserializer.to_entry(&identifier, &repo_pragma.repo);
-                        db_entries.insert(identifier, entry);
+                    for (k, v) in entries {
+                        let mut current_entry_versions: HashMap<String, Version> = HashMap::new();
+                        for (version_identifier, vd) in v {
+                            let version =
+                                vd.to_version(&version_identifier, &k.entry, &repo_pragma.repo);
+                            current_entry_versions.insert(version_identifier, version);
+                        }
+                        let entry = k.to_entry(&repo_pragma.repo, current_entry_versions);
+                        db_entries.insert(k.entry, entry);
                     }
                 }
             }
             None => {}
         }
-        self.includes = includes;
-        self.entries = db_entries;
-        self.is_entries_loaded = true;
-        return Ok(self);
+        return Ok(Db {
+            includes,
+            entries: db_entries,
+            client: Client::new(),
+            update_url: deserializer.update_url,
+            path: path.clone(),
+            backup_path: format!("{}.bak", &path),
+        });
     }
 
     pub fn entry(&self, identifier: &str) -> Result<&Entry, std::io::Error> {
-        if !self.is_entries_loaded {
-            return Err(std::io::Error::new(
-                std::io::ErrorKind::Other,
-                "Load entries before accessing an entry",
-            ));
-        }
         return self.entries.get(identifier).ok_or_else(|| {
             std::io::Error::new(
                 std::io::ErrorKind::NotFound,
                 format!("Entry '{}' not found in database.", &identifier),
             )
         });
+    }
+
+    pub fn _print(&self) {
+        println!("{:?}", self);
     }
 }
