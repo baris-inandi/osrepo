@@ -1,23 +1,61 @@
 use super::Db;
+use colored::Colorize;
 
 impl Db {
+    fn rollback(&self) {
+        println!("{}", "Rolling back to backup database".red());
+        std::fs::copy(&self.backup_path, &self.path).unwrap();
+        println!("{}", "Aborted update".red());
+    }
     pub async fn update(&self) -> Result<(), std::io::Error> {
         let url = &self.update_url;
-        let backup_path = format!("{}.bak", &self.path);
         match url {
             Some(url) => {
                 println!("Downloading database...");
-                std::fs::copy(&self.path, backup_path)?;
+                std::fs::copy(&self.path, &self.backup_path)?;
                 crate::utils::download::download(&self.client, url, &self.path)
                     .await
-                    .unwrap();
-                println!("Download finished.");
-                println!("Testing database...");
-                // TODO: perform testing here
-                // let new_db = Db::new(&self.path);
-                // new_db.load_entries();
+                    .or_else(|_| {
+                        println!("{}", "Cannot download new database".red());
+                        self.rollback();
+                        return Err(std::io::Error::new(
+                            std::io::ErrorKind::Other,
+                            "Failed to download update from update URL",
+                        ));
+                    })?;
+                println!("Download finished");
+                println!("Testing updated database...");
+                let mut new_db = Db::new(&self.path).or_else(|_| {
+                    println!(
+                        "{}",
+                        "Test failed: New database cannot be instantiated".red()
+                    );
+                    self.rollback();
+                    return Err(std::io::Error::new(
+                        std::io::ErrorKind::Other,
+                        "New database failed test: Cannot instantiate Db",
+                    ));
+                })?;
+                new_db.load_entries().or_else(|_| {
+                    println!(
+                        "{}",
+                        "Test failed: Cannot load entries form new database".red()
+                    );
+                    self.rollback();
+                    return Err(std::io::Error::new(
+                        std::io::ErrorKind::Other,
+                        "New database failed test: Cannot load entries",
+                    ));
+                })?;
+                println!("{}", "Updated database successfully".green());
             }
-            None => println!("No update url found"),
+            None => {
+                println!("{}", "No update URL provided in database, aborting".red());
+                return Err(std::io::Error::new(
+                    std::io::ErrorKind::Other,
+                    "No update URL provided in database",
+                ))?;
+            }
         }
         return Ok(());
     }

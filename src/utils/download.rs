@@ -1,6 +1,8 @@
+use colored::Colorize;
 use futures_util::StreamExt;
 use indicatif::{ProgressBar, ProgressStyle};
 use reqwest::Client;
+use reqwest::StatusCode;
 use std::cmp::min;
 use std::io::Write;
 
@@ -10,6 +12,16 @@ pub async fn download(client: &Client, url: &str, target_path: &str) -> Result<(
         .send()
         .await
         .or(Err(format!("Failed to GET from '{}'", &url)))?;
+    match res.status() {
+        StatusCode::OK => {}
+        code => {
+            println!(
+                "Download failed: Server responded with {}",
+                code.to_string().red()
+            );
+            return Err(format!("Request failed with '{}'", code));
+        }
+    };
     let total_size = res
         .content_length()
         .ok_or(format!("Failed to get content length from '{}'", &url))?;
@@ -18,7 +30,7 @@ pub async fn download(client: &Client, url: &str, target_path: &str) -> Result<(
     pb.set_style(
             ProgressStyle::default_bar()
             .template(
-                "\n{elapsed_precise:.green} elapsed, {eta:.yellow} left ({bytes}/{total_bytes})\n{percent}%  █{bar:33}  {bytes_per_sec}\n",
+                "\n{elapsed_precise:.green} elapsed, {eta:.yellow} left ({bytes}/{total_bytes})\n{percent}%  █{bar:33}  {bytes_per_sec}\n\n",
             )
             .progress_chars("█▓░"),
         );

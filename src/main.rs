@@ -22,11 +22,12 @@ use db::Db;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut db = Db::new("osrepo.yml").unwrap();
-    let entry = db.entry("windows")?;
-    let version = entry.version("11")?;
-    println!("\n{}", entry);
-    println!("\n{}", version);
-    version.download(&db.client).await?;
-    // db.update().await?;
+    // db.load_entries()?;
+    // let entry = db.entry("windows")?;
+    // let version = entry.version("11")?;
+    // println!("\n{}", entry);
+    // println!("\n{}", version);
+    // version.download(&db.client).await?;
+    db.update().await?;
     Ok(())
 }

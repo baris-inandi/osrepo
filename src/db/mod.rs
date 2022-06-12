@@ -15,6 +15,7 @@ pub struct Db {
     pub client: Client,
     pub update_url: Option<String>,
     pub path: String,
+    pub backup_path: String,
     pub serde_value: serde_yaml::Value,
     pub is_entries_loaded: bool,
 }
@@ -27,18 +28,20 @@ impl Db {
         ));
         let value: Value = serde_yaml::from_reader(file)?;
         let minimal: MinimalDbDeserializer = serde_yaml::from_value(value.clone())?;
+        let path = String::from(filepath);
         return Ok(Db {
             includes: HashMap::new(),
             entries: HashMap::new(),
             client: Client::new(),
             update_url: minimal.update_url,
-            path: String::from(filepath),
+            path: path.clone(),
+            backup_path: format!("{}.bak", &path),
             serde_value: value,
             is_entries_loaded: false,
         });
     }
 
-    pub fn load_entries(&mut self) -> Result<(), serde_yaml::Error> {
+    pub fn load_entries(&mut self) -> Result<&mut Db, serde_yaml::Error> {
         let deserializer: DbDeserializer = serde_yaml::from_value(self.serde_value.clone())?;
         let mut includes: HashMap<String, String> = HashMap::new();
         let mut db_entries: HashMap<String, Entry> = HashMap::new();
@@ -57,13 +60,15 @@ impl Db {
         self.includes = includes;
         self.entries = db_entries;
         self.is_entries_loaded = true;
-        return Ok(());
+        return Ok(self);
     }
 
-    pub fn entry(&mut self, identifier: &str) -> Result<&Entry, std::io::Error> {
-        if !&self.is_entries_loaded {
-            self.load_entries()
-                .expect("Failed to load database entries");
+    pub fn entry(&self, identifier: &str) -> Result<&Entry, std::io::Error> {
+        if !self.is_entries_loaded {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                "Load entries before accessing an entry",
+            ));
         }
         return self.entries.get(identifier).ok_or_else(|| {
             std::io::Error::new(
