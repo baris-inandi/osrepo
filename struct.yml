@@ -1,0 +1,8 @@
+include:
+    { repo: microsoft, description: description }:
+        { entry: windows, description: description, proprietary: true }:
+           win8: { url: https://windows.com/win8.iso, arch: x86_64, prerelease: true, browser: false, ext: iso }
+           win10: { url: https://windows.com/win10.iso, arch: x86_64, prerelease: true, browser: false, ext: iso }
+           win11: { url: https://windows.com/win11.iso, arch: x86_64, prerelease: true, browser: false, ext: iso }
+
+update_url: "https://raw.githubusercontent.com/baris-inandi/osrepo/main/osrepo.yml"
