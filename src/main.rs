@@ -29,6 +29,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // println!("\n{}", version);
     // version.download(&db.client).await?;
     // db.update().await?;
-    db.search("febian");
+    db.search("archlinux");
     Ok(())
 }

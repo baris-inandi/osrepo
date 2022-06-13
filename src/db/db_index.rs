@@ -1,4 +1,5 @@
 use super::Db;
+use itertools::Itertools;
 use std::collections::HashMap;
 
 fn similarity(key: &str, keyword: &str) -> f64 {
