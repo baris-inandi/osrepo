@@ -1,3 +1,4 @@
+use super::entry::Entry;
 use super::Db;
 use itertools::Itertools;
 use std::collections::HashMap;
@@ -18,7 +19,9 @@ fn similarity(key: &str, keyword: &str) -> f64 {
 }
 
 impl Db {
-    pub fn search(&self, keyword: &str) -> Result<HashMap<u64, &str>, std::io::Error> {
+    fn display_indexed(&self, i: &HashMap<u64, &Entry>) {}
+
+    pub fn search(&self, keyword: &str) -> Result<HashMap<u64, &Entry>, std::io::Error> {
         if keyword.len() < 1 {
             return Err(std::io::Error::new(
                 std::io::ErrorKind::Other,
@@ -53,7 +56,16 @@ impl Db {
                 }
             }
         }
-        println!("{:?}", out);
-        return Ok(out);
+        let out_sorted_unlimited = out.values().sorted();
+        let mut out_indexed: HashMap<u64, &Entry> = HashMap::new();
+        for (idx, key) in out_sorted_unlimited.enumerate() {
+            let entry = self.entry(key).unwrap();
+            out_indexed.insert(idx as u64 + 1, &entry);
+            if idx >= 100 {
+                break;
+            }
+        }
+        self.display_indexed(&out_indexed);
+        return Ok(out_indexed);
     }
 }

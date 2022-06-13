@@ -1,5 +1,5 @@
 pub mod db_deserializer;
-pub mod db_index;
+pub mod search;
 pub mod entry;
 pub mod repo_pragma;
 pub mod update;
