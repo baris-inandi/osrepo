@@ -14,4 +14,4 @@ reqwest = { version = "0.11.3", features = ["stream"] }
 futures-util = "0.3.14"
 indicatif = "0.16.2"
 tokio = { version = "1.19.2", features = ["full"] }
-fuzzy-matcher = "0.3.7"
+strsim = "0.10.0"
