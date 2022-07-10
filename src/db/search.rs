@@ -34,6 +34,7 @@ impl Db {
         let mut keys_first_letter: Vec<&str> = Vec::new();
         for key in keys {
             if (&key).starts_with(first_letter) {
+                println!("{}", key);
                 keys_first_letter.push(&key);
             }
         }
