@@ -1,0 +1,24 @@
+osr:
+  PureOS:
+    description: "the purest of them all"
+    added_by: "Ada Lovelace"
+    versions:
+      "21.12":
+        url: "https://github.com/pure/download"
+        contributor: "freeturk"
+  ArchC:
+    description: "some os by the community"
+    added_by: "freeturk"
+    versions:
+      "latest":
+        url: "https://arch.com/community/download"
+        contributor: "freeturk"
+      "old_version":
+        url: "https://arch.com/community/some_old_iso"
+        contributor: "baris-inandi"
+      "random_version":
+        url: "https://arch.com/community/random.iso"
+        contributor: "Ada Lovelace"
+      "v0.0.1":
+        url: "https://arch.com/community/oldest"
+        contributor: "freeturk"
